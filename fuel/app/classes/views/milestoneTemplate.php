@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title ?></title>
     <?php echo Asset::css($css) ?>
+    <style>
+        img {
+            width: 150px;
+            padding-right: 15px;
+            float: left;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h2>Logo</h2>
+        <?php echo Asset::img("Terra-Color.png", array("alt" => "Terra Logo"));  ?>
         <nav>
             <ul>
-                <li><a href="https://www.cs.colostate.edu:4444/~so0nho/m1">Home</a></li>
-                <li><a href="https://www.cs.colostate.edu:4444/~so0nho/m1/index/milestone/about">About</a></li>
-                <li><a href="https://www.cs.colostate.edu:4444/~so0nho/m1/index/milestone/generator">Color Generator</a></li>
+                <li><a href="https://www.cs.colostate.edu:4444/~mcucina/m1/index/milestone">Home</a></li>
+                <li><a href="https://www.cs.colostate.edu:4444/~mcucina/m1/index/milestone/about">About</a></li>
+                <li><a href="https://www.cs.colostate.edu:4444/~mcucina/m1/index/milestone/generator">Color Generator</a></li>
             </ul>
         </nav>
     </header>
