@@ -1,6 +1,8 @@
 <h1>Color generator</h1>
 
 <?php
+    if(isset($failView)) echo $failView;
+
     echo Form::open(array(
         'action' => 'index/milestone', 
         'method' => 'get'
