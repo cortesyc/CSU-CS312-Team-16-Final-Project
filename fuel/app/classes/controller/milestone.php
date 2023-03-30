@@ -25,18 +25,26 @@ class Controller_milestone extends Controller_Template {
         $this->template->css = "generator.css";
     }
 
-    public function get_index() { //Function called when the HTTP method is GET.
+    public function get_index() { //Function called when the HTTP method is GET.      
         $numRowsCols = Input::get('rowsCols');
         $numColors = Input::get('colors');
-        if($numRowsCols && $numColors) {
-            $data = array("numRowsCols" => $numRowsCols, "numColors" => $numColors);
-            $this->template->title = "Color generator tables";
-            $this->template->content = View::forge('milestone/tables.php', $data);
-            $this->template->css = "generator.css";
-        } else {    //TODO 
-            $data = array('failView' => $failView); 
-            $failView = View::forge("milestone/failure.php");
-            return Response::forge(View::forge('milestone/failure.php', $data)); 
+        if(isset($numRowsCols) && isset($numColors)) {    
+            if($numRowsCols && $numColors){   
+                $data = array("numRowsCols" => $numRowsCols, "numColors" => $numColors);
+                $this->template->title = "Color generator tables";
+                $this->template->content = View::forge('milestone/tables.php', $data);
+                $this->template->css = "generator.css";
+            }
+            else{
+                $failView = View::forge('milestone/failure.php');
+                $data = array('failView' => $failView);
+                return Response::forge(View::forge("milestone/generator.php", $data));
+            }
+        } else {   
+            $data = array();
+            $this->template->title = "Homepage";
+            $this->template->content = View::forge("milestone/index.php", $data);
+            $this->template->css = "index.css";
         }
     }
 
