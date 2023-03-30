@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<div class="demo">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -19,13 +20,14 @@
         <?php echo Asset::img("Terra-Color.png", array("alt" => "Terra Logo"));  ?>
         <nav>
             <ul>
-                <li><a href="https://www.cs.colostate.edu:4444/~mcucina/m1/index/milestone">Home</a></li>
-                <li><a href="https://www.cs.colostate.edu:4444/~mcucina/m1/index/milestone/about">About</a></li>
-                <li><a href="https://www.cs.colostate.edu:4444/~mcucina/m1/index/milestone/generator">Color Generator</a></li>
+                <li><a href="https://www.cs.colostate.edu:4444/~ashakap/m1/fuelviews/index/milestone/index">Home</a></li>
+                <li><a href="https://www.cs.colostate.edu:4444/~ashakap/m1/fuelviews/index/milestone/about">About</a></li>
+                <li><a href="https://www.cs.colostate.edu:4444/~ashakap/m1/fuelviews/index/milestone/generator">Color Generator</a></li>
             </ul>
         </nav>
     </header>
 
     <?php echo $content ?>
 </body>
+</div>
 </html>
