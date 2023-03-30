@@ -1,5 +1,4 @@
-
-<table class="table1">
+<table id = "hello" class="table1">
     <?php
         for($i = 0; $i < $numColors; $i++) {
             echo '<tr>
@@ -48,3 +47,23 @@ echo "Number of Rows and Columns: $numRowsCols";
 echo "<br>"; 
 echo "Number of Colors: $numColors"; 
 ?>
+<br />
+<button class="add">Print View</button>
+<!--------------------------------------------------------------------->
+
+<script type="text/javascript">
+	const button = document.querySelector('button');
+	button.addEventListener('click', () => {
+		const element = document.querySelector('.demo'); //whole document
+		element.style.width = '8.5in';
+		element.style.height = '11in';
+		element.style.filter = 'grayscale(1)';
+		element.style.position = 'relative';
+		const navigation = document.querySelector('nav'); //removing navigation
+		navigation.style.visibility = 'hidden';
+		const body = document.querySelector('.table1');
+		body.style.width = '8.5in';
+		const btn = document.querySelector('.add');
+		btn.style.visibility = 'hidden';
+	});
+</script>
