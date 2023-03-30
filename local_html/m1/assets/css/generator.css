@@ -26,3 +26,12 @@ td {
     width: 37vw;
     height: 70vh;
 }
+
+.demo {
+	width: 100%;
+	height: 100%;
+}
+
+nav {
+	visibility: visible;
+}
