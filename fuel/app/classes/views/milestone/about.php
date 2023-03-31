@@ -19,8 +19,10 @@
       <p><b>Soonho Kwon</b><br> bio </p>
     </div>
     <div class="profile4">
-      <?php echo Asset::img("", array("alt" => "Ashaka's Photo", "class" => "profile4"));?>
-      <p><b>Ashaka Pathak</b><br> bio </p>
+      <?php echo Asset::img("ashaka-p.png", array("alt" => "Ashaka's Photo", "class" => "profile4"));?>
+      <p><b>Ashaka Pathak</b><br> An Economics major with minor in Computer Science at Colorado State University. I have volunteered for multiple
+        non-profits, helping them save up to over $$10,000. I have a strong interest in design everywhere, and web design is no exception. I know
+        that once I get the hang of this, I'll take a great deal of pride in knowing how to make websites from scratch. </p>
     </div>
   </div>
 </body>
