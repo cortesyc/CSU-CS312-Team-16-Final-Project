@@ -1,7 +1,37 @@
 <table id = "hello" class="table1">
     <?php
         for($i = 0; $i < $numColors; $i++) {
+            $colors = array(
+                "red",
+                "orange",
+                "yellow",
+                "green",
+                "blue",
+                "purple",
+                "grey",
+                "brown",
+                "black",
+                "teal"
+            );
+            $optionString = '';
+            for($k = 0; $k < 10; $k++) {
+                if($k == $i) {
+                    $optionString.="<option value=".$colors[$k]." selected>".$colors[$k]."</option>"; 
+                }
+                else {
+                    $optionString.="<option value=".$colors[$k].">".$colors[$k]."</option>";
+                }
+            }
+
             echo '<tr>
+            <td class="left-col">
+            <select name="colors" id="colors">'.$optionString.'
+            </select>
+            </td>
+            <td class="right-col"></td>
+            </tr>';
+
+            /*echo '<tr>
             <td class="left-col">
             <select name="colors" id="colors">
                 <option value="red">Red</option>
@@ -17,7 +47,7 @@
             </select>
             </td>
             <td class="right-col"></td>
-            </tr>';
+            </tr>';*/
         }
     ?>
 </table>
