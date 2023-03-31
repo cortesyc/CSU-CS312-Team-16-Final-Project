@@ -11,8 +11,9 @@
       and became frustrated. So I decided to take CS 312 so that if I was ever asked to work on a website again I had the tools to make it look and function exactly as I desired.</p>
     </div>
     <div class="profile2">
-      <?php echo Asset::img("", array("alt" => "Michael's Photo", "class" => "profile2"));?>
-      <p><b>Michael Cucina</b><br> bio </p>
+      <?php echo Asset::img("me_in_Japan.jpg", array("alt" => "Michael's Photo", "class" => "profile2"));?>
+      <p><b>Michael Cucina</b><br> I am a senior in Computer Science set to graduate in Fall 2023. I'm taking this course to learn more about modern web development
+    and some of the best practices currently in use. I'm excited to graduate this year and enter the industry with the knowledge and experience I've accrued during my time at CSU. </p>
     </div>
     <div class="profile3">
       <?php echo Asset::img("", array("alt" => "Soonho's Photo", "class" => "profile3"));?>
