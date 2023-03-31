@@ -17,9 +17,9 @@
 </head>
 <body>
     <header>
-        <?php echo Asset::img("Terra-Color.png", array("alt" => "Terra Logo"));  ?>
+        <?php echo Asset::img("Terra-Color.png", array("alt" => "Terra Logo", "class" => "logo"));?>
         <nav>
-            <ul>
+            <ul class="navbar">
                 <li><a href="https://www.cs.colostate.edu:4444/~ashakap/m1/fuelviews/index/milestone/index">Home</a></li>
                 <li><a href="https://www.cs.colostate.edu:4444/~ashakap/m1/fuelviews/index/milestone/about">About</a></li>
                 <li><a href="https://www.cs.colostate.edu:4444/~ashakap/m1/fuelviews/index/milestone/generator">Color Generator</a></li>
