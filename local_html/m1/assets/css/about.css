@@ -1,5 +1,5 @@
-
 body {
+    background-color: rgb(219, 224, 219);
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -36,4 +36,78 @@ header {
 
 .navbar a:hover {
     color: gray;
+}
+
+.profiles {
+    display: flex;
+    justify-content: center;
+
+}
+
+div.profile1{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+img.profile1 {
+    height: 250px;
+    width: 200px;
+    padding-bottom: 7px;
+}
+p.bio1 {
+    display: block;
+}
+
+div.profile2{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+img.profile2 {
+    height: 250px;
+    width: 200px;
+    padding-bottom: 7px;
+}
+p.bio2 {
+    display: block;
+}
+
+div.profile3{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+img.profile3 {
+    height: 250px;
+    width: 200px;
+    padding-bottom: 7px;
+}
+p.bio3 {
+    display: block;
+}
+
+div.profile4{
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: 200px;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+img.profile4 {
+    height: 250px;
+    width: 200px;
+    padding-bottom: 7px;
+}
+p.bio4 {
+    display: block;
 }
