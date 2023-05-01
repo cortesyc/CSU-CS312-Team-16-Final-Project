@@ -25,30 +25,13 @@
 
             echo '<tr>
             <td class="left-col">
-            <select name="colors" id="colors">'.$optionString.'
+            <select class="colors" id="'.$i.'">'.$optionString.'
             </select>
             </td>
             <td class="right-col"></td>
             </tr>';
-
-            /*echo '<tr>
-            <td class="left-col">
-            <select name="colors" id="colors">
-                <option value="red">Red</option>
-                <option value="orange">Orange</option>
-                <option value="yellow">Yellow</option>
-                <option value="green">Green</option>
-                <option value="blue">Blue</option>
-                <option value="purple">Purple</option>
-                <option value="grey">Grey</option>
-                <option value="brown">Brown</option>
-                <option value="black">Black</option>
-                <option value="teal">Teal</option>
-            </select>
-            </td>
-            <td class="right-col"></td>
-            </tr>';*/
         }
+        echo '<p id="improper-color">Sorry, You can not have repeated colors.</p>';
     ?>
 </table>
 
@@ -80,7 +63,7 @@ echo "Number of Colors: $numColors";
 <br />
 <button class="add">Print View</button>
 <!--------------------------------------------------------------------->
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> 
 <script type="text/javascript">
 	const button = document.querySelector('button');
 	button.addEventListener('click', () => {
@@ -93,7 +76,51 @@ echo "Number of Colors: $numColors";
 		navigation.style.visibility = 'hidden';
 		const body = document.querySelector('.table1');
 		body.style.width = '8.5in';
+        createTextBoxes();
 		const btn = document.querySelector('.add');
 		btn.style.visibility = 'hidden';
 	});
+
+    $('#improper-color').hide();
+
+    (function () {
+    var previous;
+
+    $(".table1").on('click', function () {
+        previous = $(this).find('option:selected');
+    }).change(function() {
+
+        var changed = $(this).find('option:selected');
+        
+        for($i = 0; $i < changed.length; $i++) {
+            for($k = $i+1; $k < changed.length; $k++) {
+                if(changed[$i].value == changed[$k].value) {
+                    console.log("error");
+                    returnToOldList(changed, previous);
+                    $("#improper-color").fadeIn().delay(1500).fadeOut();
+                    return;
+                }
+            }
+        }
+    });
+})();
+
+    function returnToOldList($new, $old) {
+        console.log("made it");
+        for($i = 0; $i < $new.length; $i++) {
+            if($new[$i].value != $old[$i].value) {
+                $("#"+$i).val($old[$i].value);
+                return;
+            }
+        }
+    }
+
+    function createTextBoxes() {
+        var rows = $('.table1 tr').length;
+        for(var i = 0; i < rows; i++) {
+            var row = document.getElementById(i);
+            var temp = row.value;
+            row.replaceWith(temp);
+        }
+    }
 </script>
