@@ -22,14 +22,28 @@
                     $optionString.="<option value=".$colors[$k].">".$colors[$k]."</option>";
                 }
             }
+            $inputTag = '';
+            if($i == 0) {
+                $inputTag = '<input type="radio" 
+                id="'.$i.'-button" name="radio-colors" value="'.$i.'" checked/>';
+            }
+            else {
+                $inputTag = '<input type="radio" 
+                id="'.$i.'-button" name="radio-colors" value="'.$i.'" />';
+            }
 
             echo '<tr>
+            <td class="radio-colors">
+            '.$inputTag.'
+            <label for="'.$i.'-button">
+            </td>
             <td class="left-col">
             <select class="colors" id="'.$i.'">'.$optionString.'
             </select>
             </td>
             <td class="right-col"></td>
-            </tr>';
+            </tr></label>';
+
         }
         echo '<p id="improper-color">Sorry, You can not have repeated colors.</p>';
     ?>
@@ -47,10 +61,16 @@
         ?>
     </tr>
     <?php   //Making the rows
-        for($i = 1; $i < $numRowsCols+1; $i++) {   
-            echo "<tr>
-                    <td>$i</td>
-                </tr>";
+        for($i = 1; $i < $numRowsCols+1; $i++) {  
+            $cells = '';
+            for($k = 0; $k < $numRowsCols; $k++) {
+                $letter = ord('A') + $k;
+                $cells.='<td id="'.chr($letter).''.$i.'"></td>';
+            } 
+            echo '<tr>
+                    <td>'.$i.'</td>'
+                    .$cells.'
+                </tr>';
         }
     ?>
 </table>
@@ -121,6 +141,8 @@ echo "Number of Colors: $numColors";
             var row = document.getElementById(i);
             var temp = row.value;
             row.replaceWith(temp);
+            var button = document.getElementById(i+'-button');
+            button.style.visibility = 'hidden';
         }
     }
 </script>
