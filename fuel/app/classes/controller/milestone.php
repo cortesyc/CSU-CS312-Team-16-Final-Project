@@ -1,6 +1,6 @@
 <?php
 
-class Controller_milestone extends Controller_Template {
+class Controller_milestone1 extends Controller_Template {
 
     public $template = "milestoneTemplate.php";
 
@@ -29,7 +29,10 @@ class Controller_milestone extends Controller_Template {
         $numRowsCols = Input::get('rowsCols');
         $numColors = Input::get('colors');
         if(isset($numRowsCols) && isset($numColors)) {    
-            if($numRowsCols && $numColors){   
+            if(($numRowsCols && $numColors)
+            && in_array($numRowsCols,range(1,26))
+            && in_array($numColors,range(1,10))) 
+            {   
                 $data = array("numRowsCols" => $numRowsCols, "numColors" => $numColors);
                 $this->template->title = "Color generator tables";
                 $this->template->content = View::forge('milestone/tables.php', $data);
