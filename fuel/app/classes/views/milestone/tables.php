@@ -1,7 +1,15 @@
 <table id = "hello" class="table1">
     <?php
+        $colors = array();  
+        foreach($colorInfo as $info) {
+            $id = $info['id'];
+            $name = $info['name'];
+            $hexVal = $info['hex_value'];
+            array_push($colors, $name);
+        }
+
         for($i = 0; $i < $numColors; $i++) {
-            $colors = array(
+            /* $colors = array(
                 "red",
                 "orange",
                 "yellow",
@@ -12,9 +20,9 @@
                 "brown",
                 "black",
                 "teal"
-            );
+            ); */
             $optionString = '';
-            for($k = 0; $k < 10; $k++) {
+            for($k = 0; $k < $colorCount; $k++) {
                 if($k == $i) {
                     $optionString.="<option value=".$colors[$k]." selected>".$colors[$k]."</option>"; 
                 }
