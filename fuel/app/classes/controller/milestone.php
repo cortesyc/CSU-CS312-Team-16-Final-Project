@@ -1,6 +1,7 @@
 <?php
+use \Model\MilestoneModel;
 
-class Controller_milestone1 extends Controller_Template {
+class Controller_milestone extends Controller_Template {
 
     public $template = "milestoneTemplate.php";
 
@@ -19,7 +20,7 @@ class Controller_milestone1 extends Controller_Template {
     }
 
     public function action_generator() {
-        $data = array();
+        $data = array('colorCount' => MilestoneModel::colorCount(), 'colorInfo' => MilestoneModel::colorsInfo());
         $this->template->title = "Color Generator";
         $this->template->content = View::forge("milestone/generator.php", $data);   
         $this->template->css = "generator.css";
@@ -33,7 +34,10 @@ class Controller_milestone1 extends Controller_Template {
             && in_array($numRowsCols,range(1,26))
             && in_array($numColors,range(1,10))) 
             {   
-                $data = array("numRowsCols" => $numRowsCols, "numColors" => $numColors);
+                $data = array("numRowsCols" => $numRowsCols, 
+                "numColors" => $numColors, 
+                'colorCount' => MilestoneModel::colorCount(), 
+                'colorInfo' => MilestoneModel::colorsInfo());
                 $this->template->title = "Color generator tables";
                 $this->template->content = View::forge('milestone/tables.php', $data);
                 $this->template->css = "generator.css";
