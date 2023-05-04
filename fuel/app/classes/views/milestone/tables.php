@@ -27,6 +27,8 @@
                 $inputTag = '<input type="radio" 
                 id="'.$i.'-button" name="radio-colors" value="'.$i.'" />';
             }
+		
+	    $selectedCells = array();
 
             echo '<tr>
             <td class="radio-colors">
@@ -37,7 +39,8 @@
             <select class="colors" id="'.$i.'">'.$optionString.'
             </select>
             </td>
-            <td class="right-col"></td>
+            <td class="right-col" id="'.$i.'-right-col"> 
+            </td>
             </tr></label>';
 
         }
@@ -129,12 +132,15 @@ echo "Number of Colors: $numColors";
         for($i = 0; $i < changed.length; $i++) {
             for($k = $i+1; $k < changed.length; $k++) {
                 if(changed[$i].value == changed[$k].value) {
-                    console.log("error");
                     returnToOldList(changed, previous);
                     $("#improper-color").fadeIn().delay(1500).fadeOut();
                     return;
                 }
             }
+        }
+	var row = findChangedDropdown(changed, previous);
+        if(row != -1) {
+            updatedRightColColors(row);
         }
     });
 })();
@@ -157,6 +163,68 @@ echo "Number of Colors: $numColors";
             row.replaceWith(temp);
             var button = document.getElementById(i+'-button');
             button.style.visibility = 'hidden';
+        }
+    }
+	
+    $(".table2 td").click(function (){
+        var id = $(this).attr('id');
+
+        if(id != null) { 
+            
+            var selectedRadio = $('[name="radio-colors"]:checked');
+            var tableRow = selectedRadio.attr('id');
+
+            var index = tableRow.split('-');
+            var addData = document.getElementById(index[0] + '-right-col');
+            addData.innerHTML += id + ' ';
+            var cells = addData.innerHTML.trimStart();
+
+            var cellsArray = cells.split(" "); 
+            var selectedCells = [...new Set(cellsArray)];
+            selectedCells.sort();
+
+            addData.innerHTML = '';
+            for($i = 1; $i < selectedCells.length; $i++) {
+                addData.innerHTML += selectedCells[$i] + ' ';
+            }
+
+            checkDiffColorCellDuplicates(id, index[0]); //account for duplicates in other colors
+            colorCell(id, index[0]);
+        }
+    });
+
+    function findChangedDropdown($new, $old) {
+        for($i = 0; $i < $new.length; $i++) {
+            if($new[$i].value != $old[$i].value) {
+                return $i;
+            }
+        } 
+        return -1;
+    }
+
+    function updatedRightColColors(id) {
+        var rightCol = document.getElementById(id + '-right-col');
+        if(rightCol.innerHTML != "") {
+            var cellsToChange = rightCol.innerHTML.trimStart().split(" ");
+            for($i = 0; $i < cellsToChange.length-1; $i++) {
+                colorCell(cellsToChange[$i], id);
+            } 
+        }
+    }
+
+    function colorCell(cellToColor, index) {
+        var color = document.getElementById(index).value;
+        document.getElementById(cellToColor).style.backgroundColor = String(color);
+
+    }
+
+    function checkDiffColorCellDuplicates(currentCell, currentRow) {
+        var rows = $('.table1 tr').length;
+        for($i = 0; $i < rows; $i++) {
+            var coloredCells = document.getElementById($i + '-right-col');
+            if(coloredCells.innerHTML.includes(currentCell) && $i != currentRow) {
+                coloredCells.innerHTML = coloredCells.innerHTML.replace(currentCell + " ", "");
+            }
         }
     }
 </script>
