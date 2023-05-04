@@ -111,6 +111,8 @@ echo "Number of Colors: $numColors";
         createTextBoxes();
 		const btn = document.querySelector('.add');
 		btn.style.visibility = 'hidden';
+	        const database = document.querySelector('.db');
+        	database.style.visibility = 'hidden';
 	});
 
     $('#improper-color').hide();
