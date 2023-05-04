@@ -9,18 +9,6 @@
         }
 
         for($i = 0; $i < $numColors; $i++) {
-            /* $colors = array(
-                "red",
-                "orange",
-                "yellow",
-                "green",
-                "blue",
-                "purple",
-                "grey",
-                "brown",
-                "black",
-                "teal"
-            ); */
             $optionString = '';
             for($k = 0; $k < $colorCount; $k++) {
                 if($k == $i) {
@@ -82,6 +70,22 @@
         }
     ?>
 </table>
+
+<form class="db" method="post">
+    <label for="color-add">Name of color to add:</label>
+    <input type="text" placeholder="Color to add" name="color-add"></input>
+    <label for="color-add-hex">Hex value of color to add:</label>
+    <input type="text" placeholder="Color hex value" name="color-add-hex"></input>
+    <input type="submit" value="Add color" name="add"><br> 
+
+    <label for="color-edit">Name of color to edit:</label>
+    <input type="text" placeholder="Color to edit" name="color-edit"></input>
+    <input type="submit" value="Edit color" name="edit"><br> 
+
+    <label for="color-delete">Name of color to delete:</label>
+    <input type="text" placeholder="Color to delete" name="color-delete"></input>
+    <input type="submit" value="Delete color" name="delete"><br> 
+</form>
 
 <?php 
 echo "Number of Rows and Columns: $numRowsCols";
