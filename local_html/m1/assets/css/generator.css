@@ -79,3 +79,9 @@ td {
 nav {
 	visibility: visible;
 }
+
+.db {
+    float: right;
+    margin-right: 300px;
+    margin-bottom: 20px;
+}
