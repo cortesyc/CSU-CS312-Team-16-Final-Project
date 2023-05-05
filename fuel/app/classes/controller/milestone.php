@@ -19,7 +19,13 @@ class Controller_milestone extends Controller_Template {
         $this->template->css = "about.css";
     }
 
-    public function action_generator() {
+    public function action_generator() { 
+        if(isset($_POST['add']) && isset($_POST['color-add']) && isset($_POST['color-add-hex'])) {
+            MilestoneModel::addColor($_POST['color-add'], $_POST['color-add-hex']);
+        }
+        if(isset($_POST['delete']) && isset($_POST['color-delete'])) {
+            MilestoneModel::deleteColor($_POST['color-delete']);
+        }
         $data = array('colorCount' => MilestoneModel::colorCount(), 'colorInfo' => MilestoneModel::colorsInfo());
         $this->template->title = "Color Generator";
         $this->template->content = View::forge("milestone/generator.php", $data);   
@@ -30,9 +36,7 @@ class Controller_milestone extends Controller_Template {
         $numRowsCols = Input::get('rowsCols');
         $numColors = Input::get('colors');
         if(isset($numRowsCols) && isset($numColors)) {    
-            if(($numRowsCols && $numColors)
-            && in_array($numRowsCols,range(1,26))
-            && in_array($numColors,range(1,10))) 
+            if(($numRowsCols && $numColors)) 
             {   
                 $data = array("numRowsCols" => $numRowsCols, 
                 "numColors" => $numColors, 
@@ -54,29 +58,5 @@ class Controller_milestone extends Controller_Template {
             $this->template->css = "index.css";
         }
     }
-    
-    public function post_index() {
-        $numRowsCols = Input::get('rowsCols');
-        $numColors = Input::get('colors');
-        if(isset($_POST['add']) && isset($_POST['color-add']) && isset($_POST['color-add-hex'])) {
-            MilestoneModel::addColor($_POST['color-add'], $_POST['color-add-hex']);
-        }
-        if(isset($_POST['edit']) && isset($_POST['color-edit'])) {
-            MilestoneModel::editColor($_POST['color-edit']);
-        }
-        if(isset($_POST['delete']) && isset($_POST['color-delete'])) {
-            MilestoneModel::deleteColor($_POST['color-delete']);
-        }
-        $data = array(
-            "numRowsCols" => $numRowsCols, 
-            "numColors" => $numColors, 
-            'colorCount' => MilestoneModel::colorCount(), 
-            'colorInfo' => MilestoneModel::colorsInfo()
-        );
-        $this->template->title = "Color generator tables";
-        $this->template->content = View::forge('milestone/tables.php', $data);
-        $this->template->css = "generator.css";
-    }
-
 }
 ?>
