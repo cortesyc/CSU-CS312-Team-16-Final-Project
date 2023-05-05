@@ -67,7 +67,7 @@
                 $cells.='<td id="'.chr($letter).''.$i.'"></td>';
             } 
             echo '<tr>
-                    <td>'.$i.'</td>'
+                    <td style="font-size:14px; padding-left:1px; text-align:center">'.$i.'</td>'
                     .$cells.'
                 </tr>';
         }
