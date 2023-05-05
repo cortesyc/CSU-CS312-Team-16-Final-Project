@@ -41,7 +41,7 @@ header {
 .profiles {
     display: flex;
     justify-content: center;
-
+    flex-wrap: wrap;
 }
 
 div.profile1{
