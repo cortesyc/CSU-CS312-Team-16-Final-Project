@@ -98,9 +98,17 @@ echo "Number of Colors: $numColors";
         createTextBoxes();
 		const btn = document.querySelector('.add');
 		btn.style.visibility = 'hidden';
-	        const database = document.querySelector('.db');
-        	database.style.visibility = 'hidden';
-	});
+        const table = document.querySelector('.table2');
+        for (let i = 0; i < table.rows.length; i++) { //turn all cells in table 2 white
+            for (let j = 0; j < table.rows[i].cells.length; j++) {
+                table.rows[i].cells[j].style.backgroundColor = "white";
+            }
+        }
+        var rightColumns = document.getElementsByClassName("right-col"); //remove all innerHTML from table1
+        for (var i = 0; i < rightColumns.length; i++) {
+            rightColumns[i].innerHTML = "";
+        }
+    });
 
     $('#improper-color').hide();
 
