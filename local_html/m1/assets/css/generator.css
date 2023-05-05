@@ -65,6 +65,7 @@ td {
 .table2 {
     width: 37vw;
     height: 70vh;
+    table-layout: fixed;
 }
 
 .label, .button {
