@@ -104,10 +104,6 @@ echo "Number of Colors: $numColors";
                 table.rows[i].cells[j].style.backgroundColor = "white";
             }
         }
-        var rightColumns = document.getElementsByClassName("right-col"); //remove all innerHTML from table1
-        for (var i = 0; i < rightColumns.length; i++) {
-            rightColumns[i].innerHTML = "";
-        }
     });
 
     $('#improper-color').hide();
